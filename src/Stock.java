@@ -17,12 +17,12 @@ public class Stock {
         return format1.format(price);
     }
 
-    public double sell(){
-        return price;
-    }
-
     public void info(){
         System.out.println(name + " $" + format1.format(price));
+    }
+
+    public String currentPrice(){
+        return format1.format(price);
     }
 
 }
