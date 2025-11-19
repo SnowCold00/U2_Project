@@ -1,21 +1,31 @@
+
+
 public class Account {
 
     private String name;
-    private int day;
+    private int day = 0;
     private double wallet = 10000;
+    private String ownedStocks = "";
 
     public Account(String name){
-
         this.name = name;
-
     }
 
-    public void buyStock(){
-
+    public void buyStock(Stock name, int amount){
+        double price = name.currentPrice();
+        wallet -= price * amount;
+        ownedStocks += name.nameStock() + ";" + amount + ",";
     }
 
     public void ownedStocks(){
-
+        String[] ownList = ownedStocks.split(",");
+        for (String stock: ownList){
+            String[] stockDetails = stock.split(";");
+            System.out.println(stockDetails[0]);
+            System.out.println(stockDetails[1]);
+        }
     }
+
+
 
 }
