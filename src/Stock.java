@@ -21,8 +21,12 @@ public class Stock {
         System.out.println(name + " $" + format1.format(price));
     }
 
-    public String currentPrice(){
-        return format1.format(price);
+    public double currentPrice(){
+        return price;
+    }
+
+    public String nameStock(){
+        return name;
     }
 
 }

@@ -5,17 +5,16 @@ public class Account {
     private String name;
     private int day = 0;
     private double wallet = 10000;
-    String ownedStocks = "";
+    private String ownedStocks = "";
 
     public Account(String name){
         this.name = name;
     }
 
-    public void buyStock(Object name, int amount){
-        double price;
-        price = Double.parseDouble(name.currentPrice());
-        wallet -= price;
-        ownedStocks += name + ";" + amount + ",";
+    public void buyStock(Stock name, int amount){
+        double price = name.currentPrice();
+        wallet -= price * amount;
+        ownedStocks += name.nameStock() + ";" + amount + ",";
     }
 
     public void ownedStocks(){
@@ -26,5 +25,7 @@ public class Account {
             System.out.println(stockDetails[1]);
         }
     }
+
+
 
 }
