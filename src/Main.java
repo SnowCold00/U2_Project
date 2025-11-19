@@ -1,12 +1,17 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        Stock Apple = new Stock("Apple" , 100);
-        Account new1 = new Account("James");
-        new1.buyStock(Apple,7);
-        new1.ownedStocks();
 
+    }
 
-
+    public static String randomNames(){
+        int length = (int) ((Math.random()*5) + 1);
+        String word = "";
+        for(int i = 0; i < length; i ++){
+            word += (char) ('A' + ((int) ((Math.random()*27))));
+        }
+        return word;
     }
 }

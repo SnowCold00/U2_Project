@@ -1,4 +1,4 @@
-
+import java.text.DecimalFormat;
 
 public class Account {
 
@@ -6,6 +6,7 @@ public class Account {
     private int day = 0;
     private double wallet = 10000;
     private String ownedStocks = "";
+    DecimalFormat format1 = new DecimalFormat("$###,###,##0.00");
 
     public Account(String name){
         this.name = name;
@@ -26,6 +27,8 @@ public class Account {
         }
     }
 
-
+    public void walletAmount(){
+        System.out.println(format1.format(wallet));
+    }
 
 }
