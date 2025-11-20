@@ -6,9 +6,9 @@ public class Stock {
     private double price;
     DecimalFormat format1 = new DecimalFormat("###,###,##0.00");
 
-    public Stock(String name, double price){ //Plan to make both of these random generated, if I have time.
+    public Stock(String name){ //Plan to make both of these random generated, if I have time.
         this.name = name;
-        this.price = price;
+        price = ((int) ((Math.random()*10000)*100))/100.0;
     }
 
     public String priceChange(){

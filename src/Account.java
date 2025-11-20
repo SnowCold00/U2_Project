@@ -15,7 +15,33 @@ public class Account {
     public void buyStock(Stock name, int amount){
         double price = name.currentPrice();
         wallet -= price * amount;
+        String[] ownList = ownedStocks.split(",");
+        for (String stock : ownList) {
+            String[] stockDetails = stock.split(";");
+            if ((name + "") == stockDetails[0]) {
+                ownedStocks += name.nameStock() + ";" + amount + ",";
+                break;
+            }
+
+        }
         ownedStocks += name.nameStock() + ";" + amount + ",";
+    }
+
+    public void sellStock(Stock name, int amount) {
+        double price = name.currentPrice();
+        wallet += price * amount;
+        String[] ownList = ownedStocks.split(",");
+        for (String stock : ownList) {
+            String[] stockDetails = stock.split(";");
+            if ((name + "") == stockDetails[0]) {
+                if ((Integer.parseInt(stockDetails[1]) - amount) >= 0) {
+                    stockDetails[1] = String.valueOf(Integer.parseInt(stockDetails[1]) - amount);
+                } else {
+                    System.out.println("You don't own that many shares. ");
+                }
+            }
+
+        }
     }
 
     public void ownedStocks(){
