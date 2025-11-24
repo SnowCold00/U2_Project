@@ -18,11 +18,11 @@ public class Account {
         String[] ownList = ownedStocks.split(",");
         for (String stock : ownList) {
             String[] stockDetails = stock.split(";");
-            if ((name + "") == stockDetails[0]) {
-                ownedStocks += name.nameStock() + ";" + amount + ",";
-                break;
+            if ((name.nameStock()).equals( stockDetails[0])) {
+                int loc1 = ownedStocks.indexOf(stockDetails[0]);
+                ownedStocks = (ownedStocks.substring(0,loc1+ stockDetails[0].length()+1) + (Integer.parseInt(stockDetails[1]) + amount) + ownedStocks.substring(loc1+stock.length()));
+                return;
             }
-
         }
         ownedStocks += name.nameStock() + ";" + amount + ",";
     }
@@ -33,9 +33,10 @@ public class Account {
         String[] ownList = ownedStocks.split(",");
         for (String stock : ownList) {
             String[] stockDetails = stock.split(";");
-            if ((name + "") == stockDetails[0]) {
+            if ((name.nameStock()).equals( stockDetails[0])) {
                 if ((Integer.parseInt(stockDetails[1]) - amount) >= 0) {
-                    stockDetails[1] = String.valueOf(Integer.parseInt(stockDetails[1]) - amount);
+                    int loc1 = ownedStocks.indexOf(stockDetails[0]);
+                    ownedStocks = (ownedStocks.substring(0,loc1+ stockDetails[0].length()+1) + (Integer.parseInt(stockDetails[1]) - amount) + ownedStocks.substring(loc1+stock.length()));
                 } else {
                     System.out.println("You don't own that many shares. ");
                 }
@@ -48,7 +49,8 @@ public class Account {
         String[] ownList = ownedStocks.split(",");
         for (String stock: ownList){
             String[] stockDetails = stock.split(";");
-            System.out.println(stockDetails[0]);
+            System.out.print(stockDetails[0]);
+            System.out.print(" ");
             System.out.println(stockDetails[1]);
         }
     }

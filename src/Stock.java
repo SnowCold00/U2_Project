@@ -4,11 +4,13 @@ public class Stock {
 
     private String name;
     private double price;
-    DecimalFormat format1 = new DecimalFormat("###,###,##0.00");
+    private DecimalFormat format1 = new DecimalFormat("###,###,##0.00");
+    private int id;
 
-    public Stock(String name){ //Plan to make both of these random generated, if I have time.
+    public Stock(String name, int id){
         this.name = name;
         price = ((int) ((Math.random()*10000)*100))/100.0;
+        this.id = id;
     }
 
     public String priceChange(){
