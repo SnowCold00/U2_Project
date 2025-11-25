@@ -12,13 +12,18 @@ public class Main {
         int amountOfStockHolder;
         String stockNameHolder;
         while (newAccount.days() < 10){
-            System.out.print("buy, sell, or move on to the next day? ");
+            System.out.println("Please type in a command ");
+            System.out.println("buy = buy stock");
+            System.out.println("sell = sell stock");
+            System.out.println("owned stocks = check stocks owned");
+            System.out.println("next day = move to the next day");
+            System.out.println("check stocks = check stock market");
             userActionHolder = input.nextLine();
             if (userActionHolder.equals("buy")){
                 for(Stock stock : stockMarket){
                     stock.info();
                 }
-                System.out.println("Type in stock name you would like to buy. ");
+                System.out.println("Type in stock you would like to buy. ");
                 stockNameHolder = input.nextLine();
                 System.out.println("How many would you like to buy? ");
                 amountOfStockHolder = input.nextInt();
@@ -29,9 +34,35 @@ public class Main {
                     }
                 }
 
+            } else if (userActionHolder.equals("sell")){
+                for(Stock stock : stockMarket){
+                    stock.info();
+                }
+                System.out.println("Type in stock you would like to sell. ");
+                stockNameHolder = input.nextLine();
+                System.out.println("How many would you like to sell? ");
+                amountOfStockHolder = input.nextInt();
+                input.nextLine();
+                for(Stock stock : stockMarket){
+                    if (stock.nameStock().equals(stockNameHolder)){
+                        newAccount.sellStock(stock,amountOfStockHolder);
+                    }
+                }
+            } else if (userActionHolder.equals("owned stocks")){
+                newAccount.ownedStocks(stockMarket);
+
+            } else if (userActionHolder.equals("next day")){
+                newAccount.nextDay(stockMarket);
+
+            } else if (userActionHolder.equals("check stocks")){
+                for(Stock stock : stockMarket){
+                    stock.info();
+                }
             }
-            newAccount.nextDay(stockMarket);
         }
+        double total = newAccount.walletAmount() + newAccount.networth(stockMarket);
+        System.out.println("total amount made = $" + total);
+        input.close();
 
     }
 
