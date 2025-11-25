@@ -60,23 +60,22 @@ public class Account {
         String[] ownList = ownedStocks.split(",");
         for (String stock: ownList){
             String[] stockDetails = stock.split(";");
-            System.out.print(stockDetails[0]);
+            System.out.print(stockDetails[0] + " Amount owned: ");
             for (Stock stocks : stockMarket){
                 if (stocks.nameStock().equals(stockDetails[0])){
                     price = stocks.currentPrice();
                 }
             }
-            total += Double.parseDouble(format1.format(price*Integer.parseInt(stockDetails[1])));
+            total += Double.parseDouble(String.valueOf(price*Integer.parseInt(stockDetails[1])));
             System.out.print(stockDetails[1]);
-            System.out.println("Individual price: $" + format1.format(price) + " Total value: $" + total);
+            System.out.println("    Individual price: " + format1.format(price) + " Total value: " + format1.format(total));
 
         }
-        System.out.println("Networth : $" + total);
+        System.out.println("Networth : " + format1.format(total));
     }
 
     public double walletAmount(){
-        System.out.println(format1.format(wallet));
-        return Double.parseDouble(format1.format(wallet));
+        return wallet;
     }
 
     public int days(){
