@@ -1,7 +1,9 @@
 import java.text.DecimalFormat;
 import java.util.Scanner;
-//duplicate stock names
+
 public class Main {
+    private static String names = "";
+
     public static void main(String[] args) {
         String[] previousNames = new String[100];
         Scanner input = new Scanner(System.in);
@@ -14,6 +16,7 @@ public class Main {
         String userActionHolder;
         int amountOfStockHolder;
         String stockNameHolder;
+
         while (newAccount.days() < 10){
             System.out.println();
             System.out.println("Day: " + newAccount.days());
@@ -25,6 +28,7 @@ public class Main {
             System.out.println("next = move to the next day");
             System.out.println("check = check stock market");
             userActionHolder = input.nextLine().toLowerCase();
+
             if (userActionHolder.equals("buy") || userActionHolder.equals("buy ")){
                 for(Stock stock : stockMarket){
                     stock.info();
@@ -52,6 +56,7 @@ public class Main {
                         newAccount.sellStock(stock,amountOfStockHolder);
                     }
                 }
+
             } else if (userActionHolder.equals("owned") || userActionHolder.equals("owned ")){
                 newAccount.ownedStocks(stockMarket);
 
@@ -86,9 +91,11 @@ public class Main {
                 for (int i = 0; i < length; i++) {
                     word += (char) ('A' + ((int) ((Math.random() * 26))));
                 }
-                break;
+                if (!(names.contains(word))) {
+                    names += word + " ";
+                    return word;
+                }
             }
-            return word;
     }
 
 }
